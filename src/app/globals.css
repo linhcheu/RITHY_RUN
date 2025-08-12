@@ -1,26 +1,259 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@keyframes floatMilktea {
+  0% { transform: translateY(0px) scale(1) rotate(-2deg); }
+  25% { transform: translateY(-18px) scale(1.04) rotate(2deg); }
+  50% { transform: translateY(0px) scale(1) rotate(-2deg); }
+  75% { transform: translateY(12px) scale(0.98) rotate(-4deg); }
+  100% { transform: translateY(0px) scale(1) rotate(-2deg); }
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes dropDownBg {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 0.25;
+    transform: translateY(0);
   }
 }
+@keyframes typingLetter {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation-name: fadeIn;
+  animation-timing-function: ease;
+  animation-duration: 1.3s;
+  animation-fill-mode: both;
+}
+
+.animate-riseUpSection {
+  animation-name: riseUpSection;
+  animation-timing-function: cubic-bezier(0.77,0,0.175,1);
+  animation-duration: 1.2s;
+  animation-fill-mode: both;
+  animation-delay: 0.2s;
+}
+.animate-slideInLeft {
+  animation-name: slideInLeft;
+  animation-timing-function: cubic-bezier(0.77,0,0.175,1);
+  animation-duration: 1.3s;
+  animation-fill-mode: both;
+}
+.animate-riseIn {
+  animation-name: riseIn;
+  animation-timing-function: cubic-bezier(0.77,0,0.175,1);
+  animation-duration: 1.3s;
+  animation-fill-mode: both;
+}
+.animate-slideInRight {
+  animation-name: slideInRight;
+  animation-timing-function: cubic-bezier(0.77,0,0.175,1);
+  animation-duration: 1.3s;
+  animation-fill-mode: both;
+}
+.animate-slideInBgLeft {
+  animation-name: slideInBgLeft;
+  animation-duration: 4s;
+  animation-timing-function: cubic-bezier(0.77,0,0.175,1);
+  animation-fill-mode: both;
+}
+
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-100vw) scale(1.08); }
+  80% { opacity: 1; transform: translateX(8px) scale(1.01); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes riseIn {
+  0% { opacity: 0; transform: translateY(40px) scale(1.04); }
+  80% { opacity: 1; transform: translateY(-8px) scale(1.01); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes riseUpSection {
+  0% { 
+    opacity: 0; 
+    transform: translateY(60px) scale(0.95); 
+    filter: blur(2px);
+  }
+  60% { 
+    opacity: 0.8; 
+    transform: translateY(-10px) scale(1.02); 
+    filter: blur(0px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+    filter: blur(0px);
+  }
+}
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(100vw) scale(1.08); }
+  80% { opacity: 1; transform: translateX(-8px) scale(1.01); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes slideInBgLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+  80% {
+    opacity: 0.1;
+    transform: translateX(8px);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateX(0);
+  }
+}
+@keyframes riseBg {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(1.04);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@import "tailwindcss";
+@import "aos/dist/aos.css";
+
+/* Theme tokens (light by default) */
+:root {
+  /* Palette from spec */
+  --background: #ffffff; /* page background */
+  --foreground: #2C365A; /* primary text */
+  --card: #ffffff;       /* card/border */
+  --muted: #7b7e8f;      /* subtle text */
+  --accent: #2C365A;     /* accents match text */
+}
+
+/* Optional dark theme */
+[data-theme="dark"] {
+  --background: #0f1324;
+  --foreground: #ffffff;
+  --card: #2a2f45;
+  --muted: #b9bcc9;
+  --accent: #A0A7D1;
+}
+
+/* Expose variables; Tailwind v4 will use arbitrary values via var() */
+
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Chewy', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
+
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.card {
+  background: color-mix(in oklab, var(--card) 30%, var(--background));
+  border: 1px solid color-mix(in oklab, var(--card) 65%, transparent);
+  border-radius: 16px;
+}
+
+.tag {
+  background: color-mix(in oklab, var(--card) 35%, var(--background));
+  border: 1px solid color-mix(in oklab, var(--card) 70%, transparent);
+  color: var(--foreground);
+  border-radius: 999px;
+}
+
+.soft-shadow {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+/* A subtle gradient text utility for headings */
+.text-gradient {
+  background: linear-gradient(135deg, var(--foreground) 0%, color-mix(in oklab, var(--foreground), var(--muted)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hero scroll indicator animation */
+@keyframes bounceY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.bounce-y { animation: bounceY 1.6s infinite; }
+
+@keyframes dotReveal {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.divider-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  margin: 0 4px;
+  opacity: 0;
+  animation: dotReveal 0.4s forwards;
+  will-change: opacity;
+  z-index: 20;
+}
+@media (min-width: 640px) {
+  .divider-dot {
+    width: 16px;
+    height: 16px;
+    margin: 0 8px;
+  }
+}
+
+.about-img-front {
+  /* Extra scale and shadow for front image */
+  transition: transform 0.5s cubic-bezier(0.77,0,0.175,1), box-shadow 0.5s cubic-bezier(0.77,0,0.175,1), border 0.5s cubic-bezier(0.77,0,0.175,1), opacity 0.5s cubic-bezier(0.77,0,0.175,1);
+}
+.about-img-back {
+  transition: transform 0.5s cubic-bezier(0.77,0,0.175,1), box-shadow 0.5s cubic-bezier(0.77,0,0.175,1), border 0.5s cubic-bezier(0.77,0,0.175,1), opacity 0.5s cubic-bezier(0.77,0,0.175,1);
+}
+
+/* Full viewport section helper to avoid adjacent section peeking */
+.section-block {
+  min-height: 100vh; /* fill viewport */
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Anchor offset so fixed navbar doesn't cover titles */
+.anchor-offset { scroll-margin-top: 100px; }
+@media (max-width: 640px) { .anchor-offset { scroll-margin-top: 80px; } }
+
