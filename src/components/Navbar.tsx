@@ -15,7 +15,6 @@ const navItems = [
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
-  { label: "Portfolio", href: "#portfolio" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -26,8 +25,7 @@ const navIcons = [
   { icon: <FiFeather size={20} />, label: 'Skills' },
   { icon: <FiBriefcase size={20} />, label: 'Experience' },
   { icon: <FiBook size={20} />, label: 'Education' },
-  { icon: <FiFolder size={20} />, label: 'Portfolio' },
-  { icon: <FiMail size={20} />, label: 'Contact' },
+    { icon: <FiMail size={20} />, label: 'Contact' },
 ];
 
 export default function Navbar() {

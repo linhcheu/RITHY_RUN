@@ -7,7 +7,6 @@ import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
 import { Experience } from "@/components/sections/Experience";
 import { Education } from "@/components/sections/Education";
-import { Portfolio } from "@/components/sections/Portfolio";
 import { Contact } from "@/components/sections/Contact";
 
 // Data model
@@ -69,20 +68,18 @@ export default function Home() {
             boxSizing: 'border-box',
           }}
         />
-  <Hero aboutBgVisible={aboutBgVisible} />
+        <Hero aboutBgVisible={aboutBgVisible} />
 
-  <About aboutBgVisible={aboutBgVisible} />
+        <About aboutBgVisible={aboutBgVisible} />
 
-  <Skills skills={skills} />
+        <Skills skills={skills} />
+        <Education />
+        <Experience />
 
-  <Experience />
 
-  <Education />
+        <Contact />
 
-  <Portfolio />
-
-  <Contact />
-    </main>
+      </main>
     </>
   );
 }

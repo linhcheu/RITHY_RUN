@@ -181,7 +181,7 @@ export const Skills: React.FC = () => {
               zIndex: 2,
             }}
             onClick={() => handleIconClick(skill)}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.15)'; e.currentTarget.style.boxShadow = '0 4px 24px #6c7bbd55'; }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.15)'; e.currentTarget.style.boxShadow = '0 4px 24px #000000'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = 'none'; }}
             aria-label={skill.name}
           >
@@ -194,11 +194,11 @@ export const Skills: React.FC = () => {
         <div className="skills-modal-overlay" onClick={handleCloseModal}>
           <div className="skills-modal-panel" onClick={e => e.stopPropagation()}>
             <button className="skills-modal-close" onClick={handleCloseModal} aria-label="Close">×</button>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#3B4A8F', marginBottom: '0.7rem' }}>{selectedSkill.name}</h3>
-            <div style={{ fontSize: '1.08rem', marginBottom: '0.5rem', color: '#222' }}>{selectedSkill.description}</div>
-            <div style={{ fontSize: '0.98rem', color: '#6c7bbd', marginBottom: '0.7rem' }}>Learned: {selectedSkill.learned}</div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 200, color: '#000000', marginBottom: '0.7rem' }}>{selectedSkill.name}</h3>
+            <div style={{ fontSize: '1.08rem', marginBottom: '0.5rem', color: '#000000' }}>{selectedSkill.description}</div>
+            <div style={{ fontSize: '0.98rem', color: '#000000', marginBottom: '0.7rem' }}>Learned: {selectedSkill.learned}</div>
             <div style={{ width: '100%', marginBottom: '0.5rem' }}>
-              <div style={{ fontSize: '0.98rem', marginBottom: '0.2rem', color: '#3B4A8F' }}>Confidence</div>
+              <div style={{ fontSize: '0.98rem', marginBottom: '0.2rem', color: '#000000' }}>Confidence</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <div style={{
                   width: '70%',
@@ -210,13 +210,13 @@ export const Skills: React.FC = () => {
                   <div style={{
                     width: `${selectedSkill.confidence}%`,
                     height: '100%',
-                    background: 'linear-gradient(90deg, #3B4A8F 60%, #6c7bbd 100%)',
+                    background: 'linear-gradient(90deg, #000000 60%, #000000 100%)',
                     borderRadius: '4px',
                     transition: 'width 0.5s',
                   }} />
                 </div>
                 <span style={{ fontSize: '1.15rem' }}>{selectedSkill.confidence}%</span>
-                <span style={{ fontSize: '1.25rem' }}>{selectedSkill.confidence > 90 ? '🔥' : selectedSkill.confidence > 80 ? '😎' : '👍'}</span>
+                <span style={{ fontSize: '1.25rem' }}>{selectedSkill.confidence > 90 ? '' : selectedSkill.confidence > 80 ? '' : ''}</span>
               </div>
             </div>
           </div>
