@@ -72,7 +72,7 @@ export default function Home() {
 
         <About aboutBgVisible={aboutBgVisible} />
 
-        <Skills skills={skills} />
+        <Skills />
         <Education />
         <Experience />
 
